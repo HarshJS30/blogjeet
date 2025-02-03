@@ -55,7 +55,6 @@ const BlogDetails = () => {
             <div className="blog-details">
                 <h1 className="blog-title">{blog.title}</h1>
                 <div className="blog-meta">
-                    <pre><span className="author">By {authorName}</span></pre>
                     <pre><span className="date">{formatDate(blog.createdAt)}</span></pre>
                 </div>
                 <img 
