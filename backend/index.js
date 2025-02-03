@@ -48,7 +48,7 @@ app.use(session({
 }));
 
 app.use(cors({
-  origin: 'https://blogjeet.vercel.app/login', // Allows all origins for now
+  origin: 'https://blogjeet.vercel.app', // Allows all origins for now
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true,
