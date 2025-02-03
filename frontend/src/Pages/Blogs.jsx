@@ -59,11 +59,6 @@ const Blogs = () => {
                             <h2>{blog.title}</h2>
                             <p className="blog_meta">
                                 <pre>
-                                    <span className="author">
-                                        By {blog.author?.username || 'Anonymous'}
-                                    </span>
-                                </pre>
-                                <pre>
                                     <span className="date">
                                         {formatDate(blog.createdAt)}
                                     </span>
