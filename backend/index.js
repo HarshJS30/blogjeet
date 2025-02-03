@@ -41,21 +41,6 @@ const app = express();
 const port = process.env.PORT || 4000;
 
 
-app.use(session({
-  secret: process.env.SESSION_SECRET || 'temp-secret-change-in-production',
-  resave: false,
-  saveUninitialized: false,
-  store: MongoStore.create({
-    mongoUrl: mongoURI,
-    ttl: 24 * 60 * 60 // Session TTL in seconds (1 day)
-  }),
-  cookie: { 
-    secure: true,
-    sameSite: 'none',
-    maxAge: 24 * 60 * 60 * 1000 // 1 day in milliseconds
-  }
-}));
-
 app.use(cors({
   origin: 'https://blogjeet.vercel.app',
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
@@ -67,7 +52,8 @@ app.use(cors({
 app.use(bodyParser.json({ limit: '1mb' }));
 
 // MongoDB Connection
-const mongoURI = process.env.MONGODB_URI; 
+const mongoURI = process.env.MONGODB_URI;
+ 
 mongoose.connect(mongoURI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -78,7 +64,22 @@ mongoose.connect(mongoURI, {
     console.error("MongoDB connection error:", err)
   })
 
-// Define a User Schema
+
+  app.use(session({
+    secret: process.env.SESSION_SECRET || 'temp-secret-change-in-production',
+    resave: false,
+    saveUninitialized: false,
+    store: MongoStore.create({
+      mongoUrl: mongoURI,
+      ttl: 24 * 60 * 60 // Session TTL in seconds (1 day)
+    }),
+    cookie: { 
+      secure: true,
+      sameSite: 'none',
+      maxAge: 24 * 60 * 60 * 1000 // 1 day in milliseconds
+    }
+  }));
+  // Define a User Schema
 const UserSchema = new mongoose.Schema({
   username: { type: String, required: true, unique: true, minlength:[4] },
   password: { type: String, required: true , minlength:[4],}
