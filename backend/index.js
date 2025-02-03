@@ -43,15 +43,18 @@ app.use(session({
   resave: false,
   saveUninitialized: true,
   cookie: { 
-    secure: true// Keep false for now since frontend is HTTP. Change to true when moving to HTTPS
+    secure: true,  // This needs to be configured correctly
+    sameSite: 'none', // Add this for cross-origin requests
+    httpOnly: true  // Add this for security
   }
 }));
 
 app.use(cors({
-  origin: 'https://blogjeet.vercel.app', // Allows all origins for now
+  origin: 'https://blogjeet.vercel.app',
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true,
+  exposedHeaders: ['set-cookie']  // Add this
 }));
 
 app.use(bodyParser.json({ limit: '1mb' }));
@@ -126,7 +129,7 @@ const requireAuth = (req, res, next) => {
   next();
 }
 
-app.post('/create', upload.single('coverImage'), async (req, res) => {
+app.post('/create', requireAuth, upload.single('coverImage'), async (req, res) => {
   try {
     if (!req.file) {
       return res.status(400).json({ message: "No image file provided" });

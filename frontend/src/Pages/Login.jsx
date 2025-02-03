@@ -19,6 +19,7 @@ const Login = () => {
                 credentials: 'include',
             });
             if (response.ok) {
+                console.log('Login response headers:', response.headers);
                 alert("Logged in successfully!");
                 navigate('/home');
             } else {
