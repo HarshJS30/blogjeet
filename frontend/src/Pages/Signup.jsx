@@ -21,7 +21,7 @@ const Signup = () => {
     }
 
     try {
-      const response = await fetch('http://localhost:4000/signup', {
+      const response = await fetch('https://blogjeet-1.onrender.com/signup', {
         method: 'POST',
         body: JSON.stringify({ username, password }),
         headers: { 'Content-Type': 'application/json' },

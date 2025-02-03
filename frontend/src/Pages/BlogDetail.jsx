@@ -15,7 +15,7 @@ const BlogDetails = () => {
 
     const fetchBlog = async () => {
         try {
-            const response = await fetch(`http://localhost:4000/blogs/${id}`, {
+            const response = await fetch(`https://blogjeet-1.onrender.com/blogs/${id}`, {
                 credentials: 'include'
             });
             if (response.ok) {

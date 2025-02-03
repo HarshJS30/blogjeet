@@ -12,7 +12,7 @@ const Login = () => {
     async function handleSubmit(e) {
         e.preventDefault();
         try {
-            const response = await fetch('http://localhost:4000/login', {
+            const response = await fetch('https://blogjeet-1.onrender.com/login', {
                 method: 'POST',
                 body: JSON.stringify({ username, password }),
                 headers: { 'Content-Type': 'application/json' },

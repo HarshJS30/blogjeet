@@ -23,7 +23,7 @@ const CreateBlog=()=>{
         formdata.append('coverImage',coverimage);
 
         try{
-            const response = await fetch('http://localhost:4000/create',{
+            const response = await fetch('https://blogjeet-1.onrender.com/create',{
                 method:'POST',
                 body:formdata,
                 credentials:"include",

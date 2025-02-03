@@ -43,12 +43,12 @@ app.use(session({
   resave: false,
   saveUninitialized: true,
   cookie: { 
-    secure: false  // Keep false for now since frontend is HTTP. Change to true when moving to HTTPS
+    secure: true// Keep false for now since frontend is HTTP. Change to true when moving to HTTPS
   }
 }));
 
 app.use(cors({
-  origin: true, // Allows all origins for now
+  origin: 'https://blogjeet.vercel.app', // Allows all origins for now
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true,

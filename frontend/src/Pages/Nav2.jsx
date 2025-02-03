@@ -7,7 +7,7 @@ const LoggedinNavbar =()=>{
 
     async function handleLogout() {
         try {
-            const response = await fetch('http://localhost:4000/logout', {
+            const response = await fetch('https://blogjeet-1.onrender.com/logout', {
                 method: 'POST',
                 credentials: 'include'  
             });
