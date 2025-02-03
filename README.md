@@ -1,33 +1,38 @@
-# Blogging Website
+# Blogging Website  
 
-Welcome to the repository for my blogging website! This project is built using the **MERN stack** (MongoDB, Express.js, React, and Node.js) and utilizes the **Material-UI (MUI)** library for styling. The website currently allows users to create, read, update, and delete blog posts. However, the update and delete functionalities are not yet authenticated. This feature will be implemented in **Version 2** of the project.
-
----
-
-## Features
-
-- **Create Blog Posts**: Users can create new blog posts.
-- **Read Blog Posts**: Users can view all published blog posts.
-- **Update Blog Posts**: Users can edit existing blog posts (currently unauthenticated).
-- **Delete Blog Posts**: Users can delete blog posts (currently unauthenticated).
-- **User Authentication (Coming in V2)**: Authentication will be implemented using **sessions** and **bcrypt** for secure password hashing.
+Welcome to the repository for my **MERN stack** blogging website! This project enables users to create and view blog posts, with authentication handled using **sessions**. The update and delete functionalities are yet to be implemented and will be added in future versions.  
 
 ---
 
-## Technologies Used
+## Features  
 
-- **Frontend**: React, Material-UI (MUI)
-- **Backend**: Node.js, Express.js
-- **Database**: MongoDB
-- **Authentication**: Sessions, bcrypt (to be implemented in V2)
+- **User Authentication**: Implemented using **sessions**.  
+- **Create Blog Posts**: Users can write and publish blogs.  
+- **View Blog Posts**: Users can read all published blogs.  
+- **File Uploads**: Blog cover images are uploaded using **Multer** and stored on **Cloudinary**.  
+- **Update & Delete (Coming Soon)**: Future updates will introduce authentication-protected edit and delete functionalities.  
 
 ---
 
-## Getting Started
+## Technologies Used  
 
-Follow these steps to set up the project locally:
+- **Frontend**: React, Material-UI (MUI) (for some components)  
+- **Backend**: Node.js, Express.js  
+- **Database**: MongoDB  
+- **Authentication**: Sessions  
+- **File Handling**: Multer (for uploads), Cloudinary (for storage)  
 
-### Prerequisites
+---
 
-- Node.js and npm installed on your machine.
-- MongoDB installed or a connection string to a remote MongoDB instance
+## Getting Started  
+
+Follow these steps to set up the project locally:  
+
+### Prerequisites  
+
+- Install **Node.js** and **npm**.  
+- Have **MongoDB** running locally or use a remote connection.  
+
+---
+
+More features and improvements will be added in future updates! 🚀
