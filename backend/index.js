@@ -80,7 +80,7 @@ app.use(session({
 // Define a User Schema
 const UserSchema = new mongoose.Schema({
   username: { type: String, required: true, unique: true, minlength:[4] },
-  password: { type: String, required: true , minlength:[4],}
+  password: { type: String, required: true , minlength:[4] }
 });
 
 // Blog schema
@@ -89,7 +89,15 @@ const BlogSchema = new mongoose.Schema({
   summary: { type: String, required: true },
   coverImage: { type: String, required: true },
   content: { type: String, required: true },
-  author: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }, // Made author optional by removing required: true
+  author: { 
+    type: mongoose.Schema.Types.ObjectId, 
+    ref: 'User',
+    default: null
+  },
+  authorName: {
+    type: String,
+    default: 'Anonymous'
+  }
 },{
   timestamps: true,
 });
@@ -129,7 +137,6 @@ app.post('/login', async (req, res) => {
   }
 });
 
-// Modified create endpoint - removed requireAuth middleware
 app.post('/create', upload.single('coverImage'), async (req, res) => {
   try {
     if (!req.file) {
@@ -150,17 +157,21 @@ app.post('/create', upload.single('coverImage'), async (req, res) => {
     });
 
     const coverImage = cloudinaryResponse.secure_url;
-    // Set author if user is logged in, otherwise it will be undefined
-    const author = req.session.userId || undefined;
-
-    const newBlog = new Blog({
+    const blogData = {
       title,
       summary,
       coverImage,
       content,
-      author,
-    });
+    };
 
+    // If user is logged in, add their ID as author
+    if (req.session.userId) {
+      const user = await User.findById(req.session.userId);
+      blogData.author = req.session.userId;
+      blogData.authorName = user.username;
+    }
+
+    const newBlog = new Blog(blogData);
     await newBlog.save();
     res.status(200).json({ message: "Blog saved" });
   } catch (err) {
@@ -188,7 +199,17 @@ app.get('/blogs', async(req, res) => {
     const blogs = await Blog.find()
       .populate('author', 'username')
       .sort({createdAt: -1});
-    res.json(blogs);
+    
+    // Transform the response to handle null authors
+    const transformedBlogs = blogs.map(blog => {
+      const blogObject = blog.toObject();
+      if (!blogObject.author) {
+        blogObject.author = { username: blogObject.authorName || 'Anonymous' };
+      }
+      return blogObject;
+    });
+    
+    res.json(transformedBlogs);
   } catch(err) {
     console.error(err);
     res.status(500).json({message: "Can't fetch Blogs"});
@@ -203,8 +224,13 @@ app.get('/blogs/:id', async(req, res) => {
     if (!blog) {
       return res.status(404).json({ message: "Blog not found" });
     }
+
+    const blogObject = blog.toObject();
+    if (!blogObject.author) {
+      blogObject.author = { username: blogObject.authorName || 'Anonymous' };
+    }
     
-    res.json(blog);
+    res.json(blogObject);
   } catch(err) {
     console.error(err);
     res.status(500).json({ message: "Couldn't fetch blog" });

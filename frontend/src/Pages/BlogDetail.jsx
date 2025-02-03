@@ -4,7 +4,7 @@ import LoggedinNavbar from "./Nav2";
 
 const BlogDetails = () => {
     const { id } = useParams();
-    console.log("Blog ID from URL:", id); // Log the ID
+    console.log("Blog ID from URL:", id);
     const [blog, setBlog] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -47,13 +47,15 @@ const BlogDetails = () => {
     if (error) return <div className="pre">{error}</div>;
     if (!blog) return <div className="pre">Blog not found</div>;
 
+    const authorName = blog.author?.username || blog.authorName || 'Anonymous';
+
     return (
         <>
             <LoggedinNavbar />
             <div className="blog-details">
                 <h1 className="blog-title">{blog.title}</h1>
                 <div className="blog-meta">
-                    <pre><span className="author">By {blog.author.username} </span></pre>
+                    <pre><span className="author">By {authorName}</span></pre>
                     <pre><span className="date">{formatDate(blog.createdAt)}</span></pre>
                 </div>
                 <img 
