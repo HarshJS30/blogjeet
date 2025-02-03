@@ -8,6 +8,8 @@ const multer = require('multer');
 const cloudinary = require('cloudinary').v2;
 const { v4: uuidv4 } = require('uuid');
 const fs = require('fs');
+const MongoStore = require('connect-mongo');
+
 
 if (!fs.existsSync('./uploads')) {
     fs.mkdirSync('./uploads');
@@ -38,14 +40,19 @@ const upload = multer({
 const app = express();
 const port = process.env.PORT || 4000;
 
+
 app.use(session({
   secret: process.env.SESSION_SECRET || 'temp-secret-change-in-production',
   resave: false,
-  saveUninitialized: true,
+  saveUninitialized: false,
+  store: MongoStore.create({
+    mongoUrl: mongoURI,
+    ttl: 24 * 60 * 60 // Session TTL in seconds (1 day)
+  }),
   cookie: { 
-    secure: true,  // This needs to be configured correctly
-    sameSite: 'none', // Add this for cross-origin requests
-    httpOnly: true  // Add this for security
+    secure: true,
+    sameSite: 'none',
+    maxAge: 24 * 60 * 60 * 1000 // 1 day in milliseconds
   }
 }));
 
@@ -107,6 +114,7 @@ app.post('/signup', async (req, res) => {
   }
 })
 
+// In your backend login route
 app.post('/login', async (req, res) => {
   try {
     const { username, password } = req.body;
@@ -115,6 +123,7 @@ app.post('/login', async (req, res) => {
       return res.status(400).json({ message: "invalid credentials" })
     }
     req.session.userId = person._id;
+    console.log('Login successful, session:', req.session); // Add this
     return res.status(200).json("Logged in");
   } catch (err) {
     console.error(err);
@@ -123,6 +132,7 @@ app.post('/login', async (req, res) => {
 })
 
 const requireAuth = (req, res, next) => {
+  console.log('Session in requireAuth:', req.session); // Add this
   if (!req.session.userId) {
     return res.status(401).json({ message: "sorry, cant access this page!" })
   }
