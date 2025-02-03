@@ -1,0 +1,150 @@
+body{
+    overflow-x: hidden;
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    background-color: transparents;
+    position: relative;
+    top: -31rem;
+    left: 7%;
+}
+.form input{
+    width: 20rem;
+    height: 2.2rem;
+    padding: 0.3rem;
+    margin-bottom: 0.3rem;
+    border-radius: 0.3rem;
+    border: 0.06rem solid #000;
+    background-color: transparent;
+}
+.form input::placeholder{
+    color: #000;
+    opacity: 0.6;
+}
+
+.form button{
+    margin-top: 0.7rem;
+    margin-bottom: 0.5rem;
+    border-radius: 0.3rem;
+    width: 20rem;
+    background-color: transparent;
+    font-family: 'playfair display',sans-serif;
+    border: 0.06rem solid #000;
+    height: 1.8rem;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+.form label{
+    color: #111;
+}
+.form button:hover{
+    background-color: #000;
+    color: white;
+}
+.login h1, .login h5, .signup h1, .signup h5{
+    margin-bottom: 0.5rem;
+    font-family: 'playfair display',serif;
+    position: relative;
+    color: #222;
+    left: 7%;
+    top: -33rem;
+}
+.form a, .logout{
+    text-decoration: none;
+    padding-left: 5rem;
+    margin-top: 0.2rem;
+}
+.bg{
+    width: 40rem;
+    height: 40rem;
+    background-color: #fff;
+    opacity: 50%;
+    border: 0.001rem solid #fff;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8),
+            0 0 20px rgba(255, 255, 255, 0.6),
+            0 0 30px rgba(255, 255, 255, 0.4);
+}
+.login{
+    background-image:linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),url('sunrise-vector.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+}
+.signup{
+    background-image:linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),url('sunset-vector.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+}
+.link{
+    position: relative;
+    left: -6%;
+    color:blue;
+}
+@media (max-width: 768px) {
+    .form {
+        top: -25rem; 
+        left: 0;
+        padding: 1rem;
+        width: 100%;
+        align-items: center;
+    }
+
+    .form input {
+        width: 80%;
+        max-width: 300px;
+    }
+
+    .form button {
+        width: 80%;
+        max-width: 300px;
+    }
+
+    .login h1, .login h5, .signup h1, .signup h5 {
+        top: -18rem; /* Move the heading position further up */
+        left: 0;
+        text-align: center;
+        width: 100%;
+    }
+
+    .bg {
+        width: 90%;
+        height: 80vh;
+        max-width: 350px;
+        margin: 2rem auto;
+    }
+
+    .form a, .logout {
+        padding-left: 0;
+        text-align: center;
+        width: 100%;
+    }
+
+    .link {
+        left: 0;
+        text-align: center;
+        display: block;
+        margin-top: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .form input {
+        width: 90%;
+    }
+
+    .form button {
+        width: 90%;
+    }
+
+    .bg {
+        width: 95%;
+        height: 75vh;
+        margin: 1rem auto;
+    }
+
+    .login h1, .login h5, .signup h1, .signup h5 {
+        font-size: 90%; 
+        top: -25rem; 
+    }
+}

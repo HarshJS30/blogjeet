@@ -1,0 +1,153 @@
+.home{
+    background-image:linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),url('pexels-nkta-zv-2147980412-30443854.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+}
+.hero-content{
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.hero-content h1{
+    font-size: 45px;
+    position: relative;
+    top: -7%;
+}
+.hero-content h7{
+    font-size: 20px;
+    position: relative;
+    top: -3%;
+}
+.hero-content a {
+    width: 200px;
+    height: 50px;
+    background: linear-gradient(to right, #ff7f50, #ff4500);
+    color: black;
+    font-size: 16px;
+    border: 0.1px solid black;
+    border-radius: 25px;
+    text-align: center;
+    display: inline-block;
+    line-height: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
+  
+.hero-content a:hover {
+    background: linear-gradient(to right, #ff6347, #ff8c00);
+    color: #000;
+    border: 0.1px solid #000;
+}
+.main-page{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+.main-page a{
+    text-decoration: none;
+    color: blue;
+    position: relative;
+    top: -10px;
+    left: 10px;
+}
+.one1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 7rem;
+}
+.one1 h1{
+    font-size: 35px;
+}
+.two2{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 3rem;
+    margin-right: 3rem;
+}
+@media (max-width: 768px) {
+    .home {
+        height: auto;
+        padding: 2rem 0;
+    }
+
+    .hero-content {
+        height: auto;
+        padding: 2rem 1rem;
+    }
+
+    .hero-content h1 {
+        font-size: 32px;
+        top: 0;
+        text-align: center;
+    }
+
+    .hero-content h7 {
+        font-size: 16px;
+        top: 0;
+        text-align: center;
+    }
+
+    .hero-content a {
+        width: 150px;
+        height: 40px;
+        font-size: 14px;
+        line-height: 40px;
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+
+    .main-page {
+        height: auto;
+    }
+
+    .main-page a {
+        top: 0;
+        left: 0;
+        text-align: center;
+        display: block;
+        margin: 1rem 0;
+    }
+
+    .one1 {
+        padding-bottom: 3rem;
+    }
+
+    .one1 h1 {
+        font-size: 28px;
+        text-align: center;
+    }
+
+    .two2 {
+        flex-direction: column;
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 28px;
+    }
+
+    .hero-content h7 {
+        font-size: 14px;
+    }
+
+    .hero-content a {
+        width: 130px;
+        height: 35px;
+        font-size: 12px;
+        line-height: 35px;
+    }
+
+    .one1 h1 {
+        font-size: 24px;
+    }
+}

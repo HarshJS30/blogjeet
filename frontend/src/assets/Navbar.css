@@ -1,0 +1,140 @@
+* {
+    margin: 0;
+    padding: 0rem;
+    box-sizing: border-box;
+  }
+  
+body {
+    font-family: 'Playfair display', sans-serif;
+    line-height: 1.6;
+    color: #fff;
+    background: linear-gradient(to bottom, #1a1a1a 0%, #424242 100%);
+    height: 100%;
+}
+.navbar{
+    display: flex;
+    padding: 1rem 8rem 0 8rem;
+    justify-content: space-between;
+}
+.home a{
+    text-decoration: none;
+}
+.heading{
+    font-weight: 900;
+    font-size: 1.5rem;
+    color: #fff;
+    text-decoration: none;
+}
+.options a{
+    margin-left: 2rem;
+    font-weight: lighter;
+    font-size: 1.2rem;
+    position: relative;
+    top: 0.3rem;
+    text-decoration: none;
+    color: #fff;
+}
+.line {
+    border-top: 2px solid #fff;  
+    margin: 2rem;  
+}
+.createblog{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.blogcreation{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 4rem;
+    margin-top: 2rem;
+    width: 90%;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+}
+.blogcreation h2{
+    font-family: 'playfair display', sans-serif;
+    position: relative;
+    top: -2rem;
+}
+.blogcreation input,textarea{
+    width: 70%;
+    margin-bottom: 0.7rem;
+    padding: 0.5rem;
+    font-family: 'playfair display', serif;
+    border-radius: 0.4rem;
+    border: 1px solid #000;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+.summary{
+    height: 6rem;
+}
+.content{
+    height: 15rem;
+}
+.blogcreation button{
+    background-color: green;
+    position: relative;
+    top: -32rem;
+    border-radius: 0.4rem;
+    padding: 0.5rem;
+    color: #f4f4f4;
+    border: none;
+    width: 10%;
+}
+.blogcreation button:hover{
+    background-color: #000;
+    color: white;
+}
+@media (max-width: 768px) {
+    .navbar {
+        padding: 1rem 2rem 0 2rem;
+    }
+
+    .options a {
+        margin-left: 1rem;
+        font-size: 1rem;
+    }
+
+    .blogcreation {
+        width: 100%;
+        padding: 2rem;
+    }
+
+    .blogcreation input, .blogcreation textarea {
+        width: 90%;
+    }
+
+    .blogcreation button {
+        width: 30%;
+        top: -10rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        padding: 1rem 1rem 0 1rem;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .options a {
+        margin-left: 0.5rem;
+        font-size: 0.9rem;
+        top: 0;
+    }
+
+    .blogcreation {
+        padding: 1rem;
+    }
+
+    .blogcreation input, .blogcreation textarea {
+        width: 100%;
+    }
+
+    .blogcreation button {
+        width: 50%;
+        top: -8rem;
+    }
+}

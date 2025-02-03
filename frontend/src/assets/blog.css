@@ -1,0 +1,139 @@
+.pre{
+    height: 100vh;
+}
+.blog_card{
+    height: 25rem;
+    width: 100%;
+    color: #f4f4f4;
+    display: flex;
+    margin-bottom: 5rem;
+}
+.blog_cover_image {
+    width: 100%;
+    max-width: 40rem; 
+    height: 24rem;
+    object-fit: cover;
+    margin: 2rem;
+}
+.blog_content{
+    margin-top: 2rem;
+}
+.blog_content h2{
+    font-size: 30px;
+}
+.blog_meta{
+    display: flex;
+}
+.blog_meta pre{
+    font-family: 'playfair display';
+}
+.blog_meta span{
+    font-size: 16px;
+    color: #e0c9a6;
+}
+.blog_summary{
+    font-size: 20px;
+}
+.read{
+    color:#4da8da;
+}
+
+.blog-title{
+    position: relative;
+    left: 26%;
+    font-size: 35px;
+}
+.blog-meta pre{
+    font-family: 'playfair display';
+}
+.blog-meta{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.blog-meta span{
+    font-size: 16px;
+    color: #e0c9a6;
+}
+.blog-image{
+    width: 100%;
+    max-width: 40rem;
+    height: 25rem;
+    position: relative;
+    margin-top: 2rem;
+    left: 26%;
+}
+.blog-content{
+    font-size: 20px;
+    position: relative;
+    margin: 1rem;
+}
+@media (max-width: 768px) {
+    .blog_card {
+        height: auto;
+        flex-direction: column;
+        margin-bottom: 2rem;
+    }
+
+    .blog_cover_image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        margin: 1rem 0;
+    }
+
+    .blog_content {
+        margin-top: 1rem;
+        padding: 0 1rem;
+    }
+
+    .blog_content h2 {
+        font-size: 22px;
+    }
+
+    .blog_meta span {
+        font-size: 14px;
+    }
+
+    .blog_summary {
+        font-size: 14px;
+    }
+
+    .blog-title {
+        left: 0;
+        font-size: 24px;
+        text-align: center;
+        margin-top: 1rem;
+    }
+
+    .blog-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        left: 0;
+        margin-top: 1rem;
+    }
+
+    .blog-content {
+        font-size: 14px;
+        padding: 0 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .blog_content h2 {
+        font-size: 20px;
+    }
+
+    .blog_summary {
+        font-size: 12px;
+    }
+
+    .blog-title {
+        font-size: 20px;
+    }
+
+    .blog-content {
+        font-size: 12px;
+    }
+}
