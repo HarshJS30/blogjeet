@@ -57,7 +57,7 @@ app.use(cors({
 app.use(bodyParser.json({ limit: '1mb' }));
 
 // MongoDB Connection
-const mongoURI = process.env.MONGODB_URI || 'mongodb+srv://admin:harsh9451@cluster0.abh2p.mongodb.net/newBlog'; 
+const mongoURI = process.env.MONGODB_URI; 
 mongoose.connect(mongoURI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -126,7 +126,7 @@ const requireAuth = (req, res, next) => {
   next();
 }
 
-app.post('/create', requireAuth, upload.single('coverImage'), async (req, res) => {
+app.post('/create', upload.single('coverImage'), async (req, res) => {
   try {
     if (!req.file) {
       return res.status(400).json({ message: "No image file provided" });
