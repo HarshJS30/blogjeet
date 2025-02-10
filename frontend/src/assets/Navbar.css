@@ -2,7 +2,8 @@
     margin: 0;
     padding: 0rem;
     box-sizing: border-box;
-  }
+    overflow: hidden;
+}
   
 body {
     font-family: 'Playfair display', sans-serif;
@@ -24,6 +25,9 @@ body {
     font-size: 1.5rem;
     color: #fff;
     text-decoration: none;
+}
+.options{
+    display: flex;
 }
 .options a{
     margin-left: 2rem;
