@@ -38,7 +38,6 @@ const Navbar = () => {
                             hidden: { opacity: 0, y: -10 },
                             visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
                         }}
-                        whileHover={{ y: -2 }}
                     >
                         <Link to="/login">Login</Link>
                     </motion.div>
@@ -47,7 +46,6 @@ const Navbar = () => {
                             hidden: { opacity: 0, y: -10 },
                             visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
                         }}
-                        whileHover={{ y: -2 }}
                     >
                         <Link to="/signup">SignUp</Link>
                     </motion.div>
@@ -56,7 +54,6 @@ const Navbar = () => {
                             hidden: { opacity: 0, y: -10 },
                             visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
                         }}
-                        whileHover={{ y: -2 }}
                     >
                         <Link to="/home">Guest Login</Link>
                     </motion.div>

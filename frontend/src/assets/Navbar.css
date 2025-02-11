@@ -36,7 +36,13 @@ body {
     position: relative;
     top: 0.3rem;
     text-decoration: none;
+    transition: all 0.3s ease-in-out;
     color: #fff;
+}
+.options a:hover{
+    background-color: #4546e5;
+    padding: 1rem;
+    border-radius: 30%;
 }
 .line {
     border-top: 2px solid #fff;  
