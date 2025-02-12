@@ -32,7 +32,7 @@ body{
     font-family: 'playfair display',sans-serif;
     border: 0.06rem solid #000;
     height: 1.8rem;
-    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 .form label{
     color: #111;
@@ -40,6 +40,7 @@ body{
 .form button:hover{
     background-color: #000;
     color: white;
+    scale: 0.98;
 }
 .login h1, .login h5, .signup h1, .signup h5{
     margin-bottom: 0.5rem;
@@ -69,12 +70,30 @@ body{
     background-size: cover;
     background-position: center;
     height: 100vh;
+    animation: zoomOut 1.5s ease-out;
+}
+@keyframes zoomOut {
+    from {
+      transform: scale(0.8); 
+    }
+    to {
+      transform: scale(1);
+    }
 }
 .signup{
     background-image:linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),url('sunset-vector.jpg');
     background-size: cover;
     background-position: center;
     height: 100vh;
+    animation: zoomOut 1.8s ease-out;
+}
+@keyframes zoomOut {
+    from {
+      transform: scale(1.15); 
+    }
+    to {
+      transform: scale(1); 
+    }
 }
 .link{
     position: relative;
