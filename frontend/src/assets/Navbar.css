@@ -2,7 +2,10 @@
     margin: 0;
     padding: 0rem;
     box-sizing: border-box;
-    overflow: hidden;
+    overflow-x:hidden
+}
+::-webkit-scrollbar {
+    display: none;
 }
   
 body {
@@ -41,8 +44,11 @@ body {
 }
 .options a:hover{
     background-color: #4546e5;
-    padding: 1rem;
-    border-radius: 30%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+    border-radius: 0.9rem;
 }
 .line {
     border-top: 2px solid #fff;  
