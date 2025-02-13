@@ -70,14 +70,14 @@ body{
     background-size: cover;
     background-position: center;
     height: 100vh;
-    animation: zoomOut 1.5s ease-out;
+    animation: Opacity 1.5s ease-out;
 }
-@keyframes zoomOut {
+@keyframes Opacity {
     from {
-      transform: scale(0.8); 
+      transform: opacity(0); 
     }
     to {
-      transform: scale(1);
+      transform: opacity(1);
     }
 }
 .signup{
@@ -85,15 +85,7 @@ body{
     background-size: cover;
     background-position: center;
     height: 100vh;
-    animation: zoomOut 1.8s ease-out;
-}
-@keyframes zoomOut {
-    from {
-      transform: scale(1.15); 
-    }
-    to {
-      transform: scale(1); 
-    }
+    animation: Opacity 1.8s ease-out;
 }
 .link{
     position: relative;

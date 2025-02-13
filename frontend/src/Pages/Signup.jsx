@@ -52,8 +52,8 @@ const Signup = () => {
     >
       <motion.div 
         className="bg"
-        initial={{ x: -400, scale: 0.9, opacity: 0 }}
-        animate={{ x: 0, scale: 1, opacity: 0.5 }}
+        initial={{ x: -400, opacity: 0 }}
+        animate={{ x: 0, opacity: 0.5 }}
         transition={{ duration: 0.8, ease: "easeInOut" }}
       />
       

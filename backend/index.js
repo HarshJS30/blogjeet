@@ -40,7 +40,7 @@ const app = express();
 const port = process.env.PORT || 4000;
 
 app.use(cors({
-  origin: 'https://blogjeet.vercel.app',
+  origin: ['https://blogjeet.vercel.app','http://192.168.31.146:5175'],
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true,
