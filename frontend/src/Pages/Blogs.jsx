@@ -35,14 +35,14 @@ const SkeletonBlog = () => {
                 flexDirection: 'column',
                 gap: '1rem'
             }}>
-                <Skeleton height={36} width="80%" /> {/* Title */}
+                <Skeleton height={36} width="80%" /> 
                 <div className="blog_meta">
-                    <Skeleton width={200} height={20} /> {/* Date */}
+                    <Skeleton width={200} height={20} /> 
                 </div>
                 <div className="blog_summary">
-                    <Skeleton count={3} height={24} style={{ marginBottom: '0.5rem' }} /> {/* Summary */}
+                    <Skeleton count={3} height={24} style={{ marginBottom: '0.5rem' }} /> 
                 </div>
-                <Skeleton width={100} height={24} /> {/* Read more */}
+                <Skeleton width={100} height={24} />
             </div>
         </div>
     );
@@ -96,8 +96,8 @@ const Blogs = () => {
                 <LoggedinNavbar />
                 <div className="blog_container" style={{ height: '100vh' }}>
                     <SkeletonTheme 
-                        baseColor="rgba(255, 255, 255, 0.1)"    // Very light grey with transparency
-                        highlightColor="rgba(255, 255, 255, 0.2)" // Slightly lighter grey for animation
+                        baseColor="rgba(255, 255, 255, 0.1)"   
+                        highlightColor="rgba(255, 255, 255, 0.2)"
                     >
                         {[1, 2, 3].map((_, index) => (
                             <SkeletonBlog key={index} />
@@ -110,7 +110,6 @@ const Blogs = () => {
     
     if(error) return <div className="pre">{error}</div>;
 
-    // Rest of your component remains the same
     return (
         <>
             <LoggedinNavbar />
