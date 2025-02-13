@@ -1,71 +1,108 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import LoggedinNavbar from "./Nav2";
+import { motion } from "framer-motion";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
+import '../assets/blog.css';
 
-const BlogDetails = () => {
+const BlogDetail = () => {
     const { id } = useParams();
-    console.log("Blog ID from URL:", id);
     const [blog, setBlog] = useState(null);
-    const [isLoading, setIsLoading] = useState(true);
+    const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
     useEffect(() => {
         fetchBlog();
-    }, [id]);
+    }, []);
 
     const fetchBlog = async () => {
+        setLoading(true);
         try {
             const response = await fetch(`https://blogjeet-1.onrender.com/blogs/${id}`, {
                 credentials: 'include'
             });
+
             if (response.ok) {
                 const data = await response.json();
                 setBlog(data);
             } else {
-                const errorData = await response.json();
-                setError(errorData.message || "Can't fetch blog");
+                setError('Failed to fetch Blog');
             }
         } catch (err) {
-            setError("Server Down!");
+            setError("Server Down!!");
             console.error(err);
         } finally {
-            setIsLoading(false);
+            setTimeout(() => {
+                setLoading(false);
+            }, 2000);
         }
     };
 
-    const formatDate = (dateString) => {
-        return new Date(dateString).toLocaleString('en-US', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric',
-            hour: '2-digit',
-            minute: '2-digit'
-        });
-    };
+    if (loading) {
+        return (
+            <>
+                <LoggedinNavbar />
+                <div className="blog_detail_container">
+                    <SkeletonTheme baseColor="rgba(255, 255, 255, 0.1)" highlightColor="rgba(255, 255, 255, 0.2)">
+                        <div className="blog_detail">
+                            <Skeleton height={50} width="60%" style={{ margin: 'auto' }} />
+                            <Skeleton height={30} width="40%" style={{ margin: '1rem auto' }} />
+                            <Skeleton height={400} style={{ marginBottom: '1rem' }} />
+                            <Skeleton count={5} height={24} style={{ marginBottom: '0.5rem' }} />
+                        </div>
+                    </SkeletonTheme>
+                </div>
+            </>
+        );
+    }
 
-    if (isLoading) return <div className="pre">Loading...</div>;
     if (error) return <div className="pre">{error}</div>;
-    if (!blog) return <div className="pre">Blog not found</div>;
-
-    const authorName = blog.author?.username || blog.authorName || 'Anonymous';
 
     return (
         <>
             <LoggedinNavbar />
-            <div className="blog-details">
-                <h1 className="blog-title">{blog.title}</h1>
-                <div className="blog-meta">
-                    <pre><span className="date">{formatDate(blog.createdAt)}</span></pre>
-                </div>
-                <img 
+            <motion.div 
+                className="blog-detail-container"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 2 }}
+            >
+                <motion.h1 
+                    className="blog-title"
+                    initial={{ opacity: 0, y: -50 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1 }}
+                >
+                    {blog.title}
+                </motion.h1>
+                <motion.div 
+                    className="blog-meta"
+                    initial={{ opacity: 0, y: -30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1, delay: 0.2 }}
+                >
+                    <span>{new Date(blog.createdAt).toLocaleString()}</span>
+                </motion.div>
+                <motion.img 
                     src={blog.coverImage} 
                     alt={blog.title} 
-                    className="blog-image"
+                    className="blog-cover"
+                    initial={{ scale: 0.9, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ duration: 1.3 }}
                 />
-                <div className="blog-content">{blog.content}</div>
-            </div>
+                <motion.div 
+                    className="blog-content"
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1, delay: 0.3 }}
+                >
+                    {blog.content}
+                </motion.div>
+            </motion.div>
         </>
     );
 };
 
-export default BlogDetails;
+export default BlogDetail;

@@ -42,8 +42,9 @@
 }
 
 .blog-title{
-    position: relative;
-    left: 26%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-size: 35px;
 }
 .blog-meta pre{
@@ -56,15 +57,11 @@
 }
 .blog-meta span{
     font-size: 16px;
+    margin-bottom: 2rem;
     color: #e0c9a6;
 }
-.blog-image{
-    width: 100%;
-    max-width: 40rem;
-    height: 25rem;
-    position: relative;
-    margin-top: 2rem;
-    left: 26%;
+.blog-cover{
+    margin-left: 30rem;
 }
 .blog-content{
     font-size: 20px;
